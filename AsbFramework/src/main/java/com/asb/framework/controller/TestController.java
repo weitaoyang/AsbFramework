@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.asb.framework.service.ITestService;
 
 @Controller
 @RequestMapping("/test/*")
@@ -26,11 +29,18 @@ public class TestController
 	 * 2、String hello(@RequestParam int id),这种情况下默认会把id作为参数名来进行接收赋值 
 	 * 3、String hello(int id),这种情况下也会默认把id作为参数名来进行接收赋值 
 	 * 注:如果参数前面加上@RequestParam注解,如果地址栏上面没有加上该注解的参数,例如:id,那么会报404错误,找不到该路径 
-	 */  
+	 */
+	
+	@Autowired
+	private ITestService testService;
+	
+	
 	@RequestMapping("test.do")
 	@ResponseBody
 	public Object test(HttpServletRequest request)
 	{
+		System.out.println(testService.test(0));
+		System.out.println(testService.test(1));
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (isMultipart)
 		{
