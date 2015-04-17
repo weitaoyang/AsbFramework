@@ -4,13 +4,22 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- 导入外部的properties文件 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+            </list>
+        </property>
+	</bean>
+
     <!-- 数据源 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 -->
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://10.254.1.50:3306/fooddrugadmin?useUnicode=true&amp;characterEncoding=utf-8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="passw0rd"/>
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
         <property name="defaultAutoCommit" value="false"/>  <!-- 把数据库的提交事务关闭，让spring来管理 -->
 
         <!-- 配置初始化大小、最小、最大。通常来说，只需要修改initialSize、minIdle、maxActive。-->
