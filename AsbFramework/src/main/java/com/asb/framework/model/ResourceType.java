@@ -3,11 +3,14 @@ package com.asb.framework.model;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import java.io.Serializable;
 
 /**
@@ -49,8 +52,8 @@ public class ResourceType extends BaseEntity implements Serializable {
         this.description = description;
     }
 
-    @ManyToOne(targetEntity = ResourceType.class)
-    @JoinColumn(name = "parentTypeId", columnDefinition = "long default 0")
+    @ManyToOne(targetEntity = ResourceType.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "parentTypeId")
     public ResourceType getParentType() {
         return parentType;
     }

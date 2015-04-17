@@ -1,14 +1,17 @@
 package com.asb.framework.model;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
+import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.io.Serializable;
+
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 /**
  * BaseFramework
@@ -71,8 +74,8 @@ public class Resource extends BaseEntity implements Serializable {
         this.description = description;
     }
 
-    @ManyToOne(targetEntity = ResourceType.class)
-    @JoinColumn(name = "resourceTypeId", columnDefinition = "long default 0")
+    @ManyToOne(targetEntity = ResourceType.class, cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "resourceTypeId")
     public ResourceType getResourceType() {
         return resourceType;
     }
