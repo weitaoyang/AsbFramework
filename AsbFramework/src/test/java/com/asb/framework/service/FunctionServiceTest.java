@@ -51,7 +51,7 @@ public class FunctionServiceTest {
 
     @Test
     public void update() {
-        Function function = funcService.findById(Function.class, 7L);
+        Function function = funcService.findById(Function.class, 8L);
         //Function function = new Function();
         //function.setId(7L);
         function.setName("测试功能_修改");
@@ -103,7 +103,7 @@ public class FunctionServiceTest {
 
     @Test
     public void findById() {
-        Function function = funcService.findById(Function.class, 11L);
+        Function function = funcService.findById(Function.class, 9L);
         System.out.println(function.getName());
     }
 
