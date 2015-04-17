@@ -12,7 +12,7 @@
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="com.ehome.framework.model"/>
+        <property name="packagesToScan" value="com.asb.framework.model"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
@@ -50,7 +50,7 @@
 
     <!-- 配置事务的切入点 -->
     <aop:config expose-proxy="true" proxy-target-class="true">
-        <aop:pointcut id="txPointcut" expression="execution(* com.ehome.framework.service..*.*(..))"/>
+        <aop:pointcut id="txPointcut" expression="execution(* com.asb.framework.service..*.*(..))"/>
         <aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
     </aop:config>
 
