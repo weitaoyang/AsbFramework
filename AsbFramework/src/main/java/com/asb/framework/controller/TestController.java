@@ -39,12 +39,12 @@ public class TestController
 	private IFunctionService functionService;
 	
 	
-	@RequestMapping("")
+	@RequestMapping("testjsp")
 	public String index(HttpServletRequest request, Model model)
 	{
 		model.addAttribute("hello", "spring mvc");
 		model.addAttribute("path", request.getServletPath());
-		return "index";
+		return "test";
 	}
 	
 	
