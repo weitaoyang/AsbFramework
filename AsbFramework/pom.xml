@@ -17,6 +17,7 @@
         <freemarker.version>2.3.21</freemarker.version>
         <druid.version>1.0.7</druid.version>
         <mysql.version>5.1.31</mysql.version>
+        <db2.version>9.0</db2.version>
         <hibernate.version>4.3.6.Final</hibernate.version>
         <hibernate-commons-annotations.version>4.0.5.Final</hibernate-commons-annotations.version>
         <jodd.version>3.5.2</jodd.version>
@@ -108,6 +109,19 @@
         </dependency>
         <!-- ] mysql-driver -end -->
 
+		<!-- db2-driver -start [ -->
+		<dependency>
+			<groupId>com.ibm.db2.jcc</groupId>
+			<artifactId>db2jcc</artifactId>
+			<version>${db2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm.db2.jcc</groupId>
+			<artifactId>db2jcc_license_cu</artifactId>
+			<version>${db2.version}</version>
+		</dependency>
+		<!-- ] db2-driver -end -->
+		
         <!-- freemarker -start [ -->
         <dependency>
             <groupId>org.freemarker</groupId>

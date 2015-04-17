@@ -37,7 +37,7 @@
         <property name="minEvictableIdleTimeMillis" value="300000"/>
 
         <!-- 向数据库发送一个查询请求 -->
-        <property name="validationQuery" value="SELECT 'x'"/>
+        <property name="validationQuery" value="${jdbc.test}"/>
         <property name="testWhileIdle" value="true"/>
         <property name="testOnBorrow" value="false"/>
         <property name="testOnReturn" value="false"/>

@@ -1,10 +1,10 @@
 package com.asb.framework.controller;
 
 import java.io.File;
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,8 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.asb.framework.dto.Book;
-import com.asb.framework.dto.ListBean;
 import com.asb.framework.dto.UserInfo;
 import com.asb.framework.service.IFunctionService;
 
@@ -50,7 +48,7 @@ public class TestController
 	
 	@RequestMapping("test")
 	@ResponseBody
-	public UserInfo test(HttpServletRequest request)
+	public Object test(HttpServletRequest request)
 	{
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if (isMultipart)
@@ -95,37 +93,37 @@ public class TestController
 		List<String> hobbies = new ArrayList<String>();
 		hobbies.add("movie");
 		hobbies.add("music");
-		ListBean lb = new ListBean(hobbies);
-		List<Book> books = new ArrayList<Book>();
-		Book b1=new Book();
-		b1.setId(1);
-		b1.setName("book1");
-		Book b2=new Book();
-		b2.setId(2);
-		b2.setName("book2");
-		books.add(b1);
-		books.add(b2);
-		ListBean lb2 = new ListBean(books);
+		
+//		ListBean lb = new ListBean(hobbies);
+//		List<Book> books = new ArrayList<Book>();
+//		Book b1=new Book();
+//		b1.setId(1);
+//		b1.setName("book1");
+//		Book b2=new Book();
+//		b2.setId(2);
+//		b2.setName("book2");
+//		books.add(b1);
+//		books.add(b2);
+//		ListBean lb2 = new ListBean(books);
+//		
+//		UserInfo userInfo = new UserInfo();
+//		userInfo.setId(1);
+//		userInfo.setBirthday(new Date());
+//		userInfo.setSalary(new BigDecimal(1000));
+//		userInfo.setUserName("ywt");
+//		userInfo.setVip(true);
+//		userInfo.setHobbies(lb);
+//		userInfo.setBooks(lb2);
+//		
+//		return userInfo;
 		
 		
+		Map returnMap = new HashMap();
+		returnMap.put("errorCode", 1000);
+		returnMap.put("errorMsg", "上传成功");
+		returnMap.put("list", hobbies);
 		
-		UserInfo userInfo = new UserInfo();
-		userInfo.setId(1);
-		userInfo.setBirthday(new Date());
-		userInfo.setSalary(new BigDecimal(1000));
-		userInfo.setUserName("ywt");
-		userInfo.setVip(true);
-		userInfo.setHobbies(lb);
-		userInfo.setBooks(lb2);
-		
-		return userInfo;
-		
-		
-//		Map returnMap = new HashMap();
-//		returnMap.put("errorCode", 1000);
-//		returnMap.put("errorMsg", "上传成功");
-//		returnMap.put("list", a);
-//		return returnMap;
+		return returnMap;
 	}
 	
 	
